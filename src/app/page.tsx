@@ -1,10 +1,25 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
 	const [isMenuShown, setIsMenuShown] = useState(false)
+	const menu = useRef<HTMLUListElement>(null)
+
+	useEffect(() => {
+		const closeMenu = (event: MouseEvent) => {
+			if (!menu.current?.contains(event.target as Node)) {
+				setIsMenuShown(false)
+			}
+		}
+
+		addEventListener('mousedown', closeMenu)
+
+		return () => {
+			removeEventListener('mousedown', closeMenu)
+		}
+	}, [])
 
 	const toggleIsMenuShown = () => {
 		setIsMenuShown(!isMenuShown)
@@ -13,15 +28,15 @@ export default function Home() {
 	return (
 		<div className='text-neutral-50'>
 			<main className='p-8 gap-8 flex justify-evenly items-center min-h-svh text-xl flex-wrap'>
-				<ul className='flex flex-col gap-4'>
+				<ul className='flex flex-col gap-4 items-center sm:items-start'>
 					<li>
-						<h1 className='text-6xl sm:text-9xl font-bold break-all'>Sefo</h1>
+						<h1 className='text-9xl font-bold break-all'>Sefo</h1>
 					</li>
 					<li>
 						<q className='italic'>Shrouded in Light</q>
 					</li>
 					<li>
-						<h2>Developer, melancholic, introvert</h2>
+						<h2>Developer, melancholic, introvert.</h2>
 					</li>
 				</ul>
 				<button type='button' onClick={toggleIsMenuShown}>
@@ -56,7 +71,10 @@ export default function Home() {
 				</ul>
 			</main>
 			{isMenuShown && (
-				<ul className='fixed left-8 right-8 bottom-8 bg-black bg-opacity-80 backdrop-blur rounded-3xl p-8 flex gap-8 w-fit mx-auto flex-wrap'>
+				<ul
+					ref={menu}
+					className='fixed left-8 right-8 bottom-8 bg-black bg-opacity-80 backdrop-blur rounded-3xl p-8 flex gap-8 w-fit mx-auto flex-wrap'
+				>
 					<li>
 						<a href='mailto:SefoNotasi@gmail.com'>Email</a>
 					</li>
