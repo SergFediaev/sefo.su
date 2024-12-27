@@ -22,7 +22,7 @@ body {
 
 @layer base {
 	a {
-		@apply underline underline-offset-4 decoration-accent hover:text-accent;
+		@apply underline underline-offset-4 decoration-accent hover:text-accent transition;
 	}
 
 	q:before,

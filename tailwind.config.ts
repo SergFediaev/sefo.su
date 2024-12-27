@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
 export default {
 	content: [
@@ -12,6 +13,7 @@ export default {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
 				accent: '#0f0',
+				variant: colors.lime['400'],
 			},
 			animation: {
 				heartbeat: 'heartbeat .25s infinite alternate',

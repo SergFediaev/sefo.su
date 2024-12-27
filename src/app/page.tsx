@@ -1,15 +1,22 @@
 'use client'
 
+import { combine } from '@/utils/combine'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
 	const [isMenuShown, setIsMenuShown] = useState(false)
+	const [isAvatarShown, setIsAvatarShown] = useState(false)
+	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
+	const button = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
 		const closeMenu = (event: MouseEvent) => {
-			if (!menu.current?.contains(event.target as Node)) {
+			if (
+				!menu.current?.contains(event.target as Node) &&
+				!button.current?.contains(event.target as Node)
+			) {
 				setIsMenuShown(false)
 			}
 		}
@@ -25,50 +32,64 @@ export default function Home() {
 		setIsMenuShown(!isMenuShown)
 	}
 
+	const showAvatar = () => {
+		setIsAvatarAnimating(true)
+		setIsAvatarShown(true)
+
+		setTimeout(() => {
+			setIsAvatarShown(false)
+		}, 2_000)
+
+		setTimeout(() => {
+			setIsAvatarAnimating(false)
+		}, 4_000)
+	}
+
 	return (
-		<div className='text-neutral-50'>
-			<main className='p-8 gap-8 flex justify-evenly items-center min-h-svh text-xl flex-wrap'>
-				<ul className='flex flex-col gap-4 items-center sm:items-start'>
-					<li>
-						<h1 className='text-9xl font-bold break-all'>Sefo</h1>
-					</li>
-					<li>
-						<q className='italic'>Shrouded in Light</q>
-					</li>
-					<li>
-						<h2>Developer, melancholic, introvert.</h2>
-					</li>
-				</ul>
-				<button type='button' onClick={toggleIsMenuShown}>
-					<Image
-						src='/symbol.png'
-						alt='Symbol'
-						width={300}
-						height={300}
-						priority
-						className='animate-pulse hover:animate-heartbeat'
-					/>
-				</button>
-				<ul className='list-disc marker:text-accent flex flex-col gap-2'>
-					<h3 className='text-3xl'>Projects:</h3>
-					<li>
-						<a href='https://steamcommunity.com/groups/Left4Legend'>
-							Left 4 Legend
-						</a>
-					</li>
-					<li>
-						<a href='https://notasi.ru/javangelion'>Javangelion</a>
-					</li>
-					<li>
-						<a href='https://notasi.ru/deci/en'>Deci</a>
-					</li>
-					<li>
-						<a href='https://vk.com/drumgard'>Drumgard</a> <sup>(inactive)</sup>
-					</li>
-					<li>
-						<a href='https://notasi.ru'>Notasi</a> <sup>(old)</sup>
-					</li>
-				</ul>
+		<div className='text-neutral-50 container mx-auto'>
+			<main className='p-8 flex items-center min-h-svh text-xl'>
+				<div className='flex justify-evenly flex-grow flex-wrap gap-8'>
+					<ul className='flex flex-col gap-4 items-center sm:items-start'>
+						<li>
+							<h1 className='text-9xl font-bold break-all'>Sefo</h1>
+						</li>
+						<li>
+							<q>Embraced by Light</q>
+						</li>
+						<li>
+							<h2>Developer, melancholic, introvert.</h2>
+						</li>
+					</ul>
+					<button ref={button} type='button' onClick={toggleIsMenuShown}>
+						<Image
+							src='/symbol.png'
+							alt='Symbol'
+							width={300}
+							height={300}
+							priority
+							className='animate-pulse hover:animate-heartbeat'
+						/>
+					</button>
+					<ul className='list-disc marker:text-accent flex flex-col gap-2'>
+						<h3 className='text-3xl'>Projects:</h3>
+						<li>
+							<a href='https://L4L.Sefo.su'>Left 4 Legend</a>
+						</li>
+						<li>
+							<a href='https://Notasi.ru/javangelion'>Javangelion</a>
+						</li>
+						<li>
+							<a href='https://Notasi.ru/deci/en'>Deci</a>
+						</li>
+						<li>
+							<a href='https://vk.com/Drumgard'>Drumgard</a>{' '}
+							<sup>(inactive)</sup>
+						</li>
+						<li>
+							<a href='https://Notasi.ru'>Notasi</a> <sup>(old)</sup>
+						</li>
+					</ul>
+				</div>
 			</main>
 			{isMenuShown && (
 				<ul
@@ -87,9 +108,30 @@ export default function Home() {
 					<li>
 						<a href='/cake.jpg'>The cake is NOT a lie</a>
 					</li>
+					<li>
+						<button
+							type='button'
+							onClick={showAvatar}
+							className='bg-accent hover:bg-variant transition text-black px-2 rounded-lg disabled:opacity-50 disabled:bg-variant'
+							title='People are always asking me if I know Milandro Noshimo'
+							disabled={isAvatarAnimating}
+						>
+							Toasty
+						</button>
+					</li>
 					<li>More coming soon</li>
 				</ul>
 			)}
+			<Image
+				src='/avatar.png'
+				alt='Avatar'
+				width={400}
+				height={600}
+				className={combine(
+					'drop-shadow-[0_0_10px_rgba(0,0,0,1)] fixed bottom-0 left-0 duration-1000',
+					isAvatarShown ? 'ease-out' : '-translate-x-full ease-in',
+				)}
+			/>
 		</div>
 	)
 }

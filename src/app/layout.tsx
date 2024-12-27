@@ -12,7 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	title: 'Sefo',
-	description: 'Sefo',
+	description: 'Next Legend',
+	keywords: ['Sef', 'Sefo', 'Noshimo', 'Notasi', 'Milandro'],
 }
 
 export default function RootLayout({
