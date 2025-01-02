@@ -46,12 +46,12 @@ export default function Home() {
 	}
 
 	return (
-		<div className='text-neutral-50 container mx-auto'>
-			<main className='p-8 flex items-center min-h-svh text-xl'>
-				<div className='flex justify-evenly flex-grow flex-wrap gap-8'>
-					<ul className='flex flex-col gap-4 items-center sm:items-start'>
+		<div className='container mx-auto text-neutral-50'>
+			<main className='flex min-h-svh items-center p-8 text-xl'>
+				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
+					<ul className='flex flex-col items-center gap-4 sm:items-start'>
 						<li>
-							<h1 className='text-9xl font-bold break-all'>Sefo</h1>
+							<h1 className='break-all font-bold text-9xl'>Sefo</h1>
 						</li>
 						<li>
 							<q>Embraced by Light</q>
@@ -70,7 +70,7 @@ export default function Home() {
 							className='animate-pulse hover:animate-heartbeat'
 						/>
 					</button>
-					<ul className='list-disc marker:text-accent flex flex-col gap-2'>
+					<ul className='flex list-disc flex-col gap-2 marker:text-accent'>
 						<h3>Projects:</h3>
 						<li>
 							<a href='https://L4L.Sefo.su'>Left 4 Legend</a>
@@ -94,7 +94,7 @@ export default function Home() {
 			<ul
 				ref={menu}
 				className={combine(
-					'fixed left-8 right-8 bottom-8 bg-black bg-opacity-80 backdrop-blur rounded-3xl p-8 flex gap-4 sm:gap-8 w-fit mx-auto flex-wrap duration-500',
+					'fixed right-8 bottom-8 left-8 mx-auto flex w-fit flex-wrap gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:gap-8',
 					isMenuNotShown && 'opacity-0',
 				)}
 			>
@@ -114,7 +114,7 @@ export default function Home() {
 					<button
 						type='button'
 						onClick={showAvatar}
-						className='bg-accent hover:bg-variant transition text-black px-2 rounded-lg disabled:opacity-50 disabled:bg-variant'
+						className='rounded-lg bg-accent px-2 text-black transition hover:bg-variant disabled:bg-variant disabled:opacity-50'
 						title='People are always asking me if I know Milandro Noshimo'
 						disabled={isAvatarAnimating}
 					>
@@ -129,7 +129,7 @@ export default function Home() {
 				width={400}
 				height={600}
 				className={combine(
-					'drop-shadow-[0_0_10px_rgba(0,0,0,1)] fixed bottom-0 left-0 duration-1000',
+					'fixed bottom-0 left-0 drop-shadow-[0_0_10px_rgba(0,0,0,1)] duration-1000',
 					isAvatarShown ? 'ease-out' : '-translate-x-full ease-in',
 				)}
 			/>
