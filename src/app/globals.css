@@ -35,6 +35,6 @@ body {
 	}
 
 	::selection {
-		@apply bg-black text-accent;
+		@apply bg-accent text-black;
 	}
 }

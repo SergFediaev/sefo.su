@@ -9,6 +9,7 @@ export default function Home() {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
 	const [isAvatarShown, setIsAvatarShown] = useState(false)
 	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
+	const [isLighted, setIsLighted] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
 	const t = useTranslations('HomePage')
@@ -30,8 +31,14 @@ export default function Home() {
 		}
 	}, [])
 
+	const toastyTitle = isAvatarAnimating ? undefined : t('toastyTitle')
+
 	const toggleIsMenuShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
+	}
+
+	const toggleIsLighted = () => {
+		setIsLighted(!isLighted)
 	}
 
 	const showAvatar = () => {
@@ -53,7 +60,16 @@ export default function Home() {
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
 					<ul className='flex flex-col items-center gap-4 sm:items-start'>
 						<li>
-							<h1 className='break-all font-bold text-9xl'>{t('name')}</h1>
+							<h1
+								className={combine(
+									'break-all font-bold text-9xl transition duration-500',
+									isLighted && 'drop-shadow-[0_0_10px_rgba(0,255,0,1)]',
+								)}
+							>
+								<button type='button' onClick={toggleIsLighted}>
+									{t('name')}
+								</button>
+							</h1>
 						</li>
 						<li>
 							<q>{t('slogan')}</q>
@@ -118,7 +134,7 @@ export default function Home() {
 						type='button'
 						onClick={showAvatar}
 						className='rounded-lg bg-accent px-2 text-black transition hover:bg-variant disabled:bg-variant disabled:opacity-50'
-						title={t('toastyTitle')}
+						title={toastyTitle}
 						disabled={isAvatarAnimating}
 					>
 						{t('toasty')}
