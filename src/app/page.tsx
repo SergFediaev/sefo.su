@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
-	const [isMenuShown, setIsMenuShown] = useState(false)
+	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
 	const [isAvatarShown, setIsAvatarShown] = useState(false)
 	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
@@ -17,7 +17,7 @@ export default function Home() {
 				!menu.current?.contains(event.target as Node) &&
 				!button.current?.contains(event.target as Node)
 			) {
-				setIsMenuShown(false)
+				setIsMenuNotShown(true)
 			}
 		}
 
@@ -29,7 +29,7 @@ export default function Home() {
 	}, [])
 
 	const toggleIsMenuShown = () => {
-		setIsMenuShown(!isMenuShown)
+		setIsMenuNotShown(!isMenuNotShown)
 	}
 
 	const showAvatar = () => {
@@ -71,7 +71,7 @@ export default function Home() {
 						/>
 					</button>
 					<ul className='list-disc marker:text-accent flex flex-col gap-2'>
-						<h3 className='text-3xl'>Projects:</h3>
+						<h3>Projects:</h3>
 						<li>
 							<a href='https://L4L.Sefo.su'>Left 4 Legend</a>
 						</li>
@@ -91,37 +91,38 @@ export default function Home() {
 					</ul>
 				</div>
 			</main>
-			{isMenuShown && (
-				<ul
-					ref={menu}
-					className='fixed left-8 right-8 bottom-8 bg-black bg-opacity-80 backdrop-blur rounded-3xl p-8 flex gap-8 w-fit mx-auto flex-wrap'
-				>
-					<li>
-						<a href='mailto:SefoNotasi@gmail.com'>Email</a>
-					</li>
-					<li>
-						<a href='https://t.me/SefoNotasi'>Telegram</a>
-					</li>
-					<li>
-						<a href='/license.jpg'>Domain license</a>
-					</li>
-					<li>
-						<a href='/cake.jpg'>The cake is NOT a lie</a>
-					</li>
-					<li>
-						<button
-							type='button'
-							onClick={showAvatar}
-							className='bg-accent hover:bg-variant transition text-black px-2 rounded-lg disabled:opacity-50 disabled:bg-variant'
-							title='People are always asking me if I know Milandro Noshimo'
-							disabled={isAvatarAnimating}
-						>
-							Toasty
-						</button>
-					</li>
-					<li>More coming soon</li>
-				</ul>
-			)}
+			<ul
+				ref={menu}
+				className={combine(
+					'fixed left-8 right-8 bottom-8 bg-black bg-opacity-80 backdrop-blur rounded-3xl p-8 flex gap-4 sm:gap-8 w-fit mx-auto flex-wrap duration-500',
+					isMenuNotShown && 'opacity-0',
+				)}
+			>
+				<li>
+					<a href='mailto:SefoNotasi@gmail.com'>Email</a>
+				</li>
+				<li>
+					<a href='https://t.me/SefoNotasi'>Telegram</a>
+				</li>
+				<li>
+					<a href='/license.jpg'>Domain license</a>
+				</li>
+				<li>
+					<a href='/cake.jpg'>The cake is NOT a lie</a>
+				</li>
+				<li>
+					<button
+						type='button'
+						onClick={showAvatar}
+						className='bg-accent hover:bg-variant transition text-black px-2 rounded-lg disabled:opacity-50 disabled:bg-variant'
+						title='People are always asking me if I know Milandro Noshimo'
+						disabled={isAvatarAnimating}
+					>
+						Toasty
+					</button>
+				</li>
+				<li>More coming soon</li>
+			</ul>
 			<Image
 				src='/avatar.png'
 				alt='Avatar'
