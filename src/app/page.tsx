@@ -62,8 +62,8 @@ export default function Home() {
 					</ul>
 					<button ref={button} type='button' onClick={toggleIsMenuShown}>
 						<Image
-							src='/symbol.png'
-							alt='Symbol'
+							src='/logo.svg'
+							alt='Logo'
 							width={300}
 							height={300}
 							priority
