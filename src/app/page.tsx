@@ -1,6 +1,7 @@
 'use client'
 
 import { combine } from '@/utils/combine'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
@@ -10,6 +11,7 @@ export default function Home() {
 	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
+	const t = useTranslations('HomePage')
 
 	useEffect(() => {
 		const closeMenu = (event: MouseEvent) => {
@@ -51,19 +53,19 @@ export default function Home() {
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
 					<ul className='flex flex-col items-center gap-4 sm:items-start'>
 						<li>
-							<h1 className='break-all font-bold text-9xl'>Sefo</h1>
+							<h1 className='break-all font-bold text-9xl'>{t('name')}</h1>
 						</li>
 						<li>
-							<q>Embraced by Light</q>
+							<q>{t('slogan')}</q>
 						</li>
 						<li>
-							<h2>Developer, melancholic, introvert.</h2>
+							<h2>{t('about')}</h2>
 						</li>
 					</ul>
 					<button ref={button} type='button' onClick={toggleIsMenuShown}>
 						<Image
 							src='/logo.svg'
-							alt='Logo'
+							alt={t('logo')}
 							width={300}
 							height={300}
 							priority
@@ -71,22 +73,23 @@ export default function Home() {
 						/>
 					</button>
 					<ul className='flex list-disc flex-col gap-2 marker:text-accent'>
-						<h3>Projects:</h3>
+						<h3>{t('projects')}</h3>
 						<li>
-							<a href='https://L4L.Sefo.su'>Left 4 Legend</a>
+							<a href='https://L4L.Sefo.su'>{t('left4Legend')}</a>
 						</li>
 						<li>
-							<a href='https://Notasi.ru/javangelion'>Javangelion</a>
+							<a href='https://Notasi.ru/javangelion'>{t('javangelion')}</a>
 						</li>
 						<li>
-							<a href='https://Notasi.ru/deci/en'>Deci</a>
+							<a href='https://Notasi.ru/deci/en'>{t('deci')}</a>
 						</li>
 						<li>
-							<a href='https://vk.com/Drumgard'>Drumgard</a>{' '}
-							<sup>(inactive)</sup>
+							<a href='https://vk.com/Drumgard'>{t('drumgard')}</a>{' '}
+							<sup>{t('inactive')}</sup>
 						</li>
 						<li>
-							<a href='https://Notasi.ru'>Notasi</a> <sup>(old)</sup>
+							<a href='https://Notasi.ru'>{t('notasi')}</a>{' '}
+							<sup>{t('old')}</sup>
 						</li>
 					</ul>
 				</div>
@@ -99,33 +102,33 @@ export default function Home() {
 				)}
 			>
 				<li>
-					<a href='mailto:SefoNotasi@gmail.com'>Email</a>
+					<a href='mailto:SefoNotasi@gmail.com'>{t('email')}</a>
 				</li>
 				<li>
-					<a href='https://t.me/SefoNotasi'>Telegram</a>
+					<a href='https://t.me/SefoNotasi'>{t('telegram')}</a>
 				</li>
 				<li>
-					<a href='/license.jpg'>Domain license</a>
+					<a href='/license.jpg'>{t('domainLicense')}</a>
 				</li>
 				<li>
-					<a href='/cake.jpg'>The cake is NOT a lie</a>
+					<a href='/cake.jpg'>{t('cake')}</a>
 				</li>
 				<li>
 					<button
 						type='button'
 						onClick={showAvatar}
 						className='rounded-lg bg-accent px-2 text-black transition hover:bg-variant disabled:bg-variant disabled:opacity-50'
-						title='People are always asking me if I know Milandro Noshimo'
+						title={t('toastyTitle')}
 						disabled={isAvatarAnimating}
 					>
-						Toasty
+						{t('toasty')}
 					</button>
 				</li>
-				<li>More coming soon</li>
+				<li>{t('comingSoon')}</li>
 			</ul>
 			<Image
 				src='/avatar.png'
-				alt='Avatar'
+				alt={t('avatar')}
 				width={400}
 				height={600}
 				className={combine(

@@ -1,0 +1,24 @@
+{
+	"HomePage": {
+		"name": "Sefo",
+		"slogan": "Embraced by Light",
+		"about": "Developer, melancholic, introvert.",
+		"logo": "Logo",
+		"projects": "Projects:",
+		"left4Legend": "Left 4 Legend",
+		"javangelion": "Javangelion",
+		"deci": "Deci",
+		"drumgard": "Drumgard",
+		"notasi": "Notasi",
+		"inactive": "(inactive)",
+		"old": "(old)",
+		"email": "Email",
+		"telegram": "Telegram",
+		"domainLicense": "Domain license",
+		"cake": "The cake is NOT a lie",
+		"toasty": "Toasty",
+		"toastyTitle": "People are always asking me if I know Milandro Noshimo",
+		"comingSoon": "More coming soon",
+		"avatar": "Avatar"
+	}
+}
