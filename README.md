@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sefo.su
 
-## Getting Started
+Сайт-визитка **Сефо**.
 
-First, run the development server:
+## 🔑 Основные возможности
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Веб-приложение, развёрнутое через платформу **Coolify** на выделенной тачке с **Ubuntu Server** (minimized).
+- **Фронтенд** — лендинг, оптимизированный под мобильные, с отзывчивым и адаптивным веб-дизайном.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Стек Bleeding Edge технологий
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 15**+ (App Router).
+- React 19.
+- TypeScript.
+- **Bun** — runtime, package manager & bundler.
+- **Biome** — formatter & linter.
+- **Next-Intl** — internationalization.
+- Flat Code, Guard Clause.
+- [Архитектурная методология Дэна Абрамова](https://react-file-structure.surge.sh).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎨 UI/UX
 
-## Learn More
+- Tailwind CSS.
+- Mobile-First.
+- **Responsive** & **Adaptive** web design.
+- HTML5 Semantics.
 
-To learn more about Next.js, take a look at the following resources:
+## 🔎 SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js Metadata API.
+- Google Analytics 4.
+- Яндекс Метрика с вебвизором.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Конвенции
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Семантическое версионирование.
+- Соглашение о коммитах.
