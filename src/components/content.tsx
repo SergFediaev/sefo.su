@@ -18,8 +18,8 @@ export const Content = ({
 	...restProps
 }: ComponentPropsWithoutRef<'div'>) => {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
-	const [isAvatarShown, setIsAvatarShown] = useState(false)
-	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
+	const [isCharacterShown, setIsCharacterShown] = useState(false)
+	const [isCharacterAnimating, setIsCharacterAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
 	const t = useTranslations('HomePage')
@@ -41,22 +41,22 @@ export const Content = ({
 		}
 	}, [])
 
-	const characterTitle = isAvatarAnimating ? undefined : t('characterTitle')
+	const characterTitle = isCharacterAnimating ? undefined : t('characterTitle')
 
 	const toggleIsMenuShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
 	}
 
-	const showAvatar = () => {
-		setIsAvatarAnimating(true)
-		setIsAvatarShown(true)
+	const showCharacter = () => {
+		setIsCharacterAnimating(true)
+		setIsCharacterShown(true)
 
 		setTimeout(() => {
-			setIsAvatarShown(false)
+			setIsCharacterShown(false)
 		}, 2_000)
 
 		setTimeout(() => {
-			setIsAvatarAnimating(false)
+			setIsCharacterAnimating(false)
 		}, 4_000)
 	}
 
@@ -122,9 +122,9 @@ export const Content = ({
 				</li>
 				<li>
 					<Button
-						onClick={showAvatar}
+						onClick={showCharacter}
 						title={characterTitle}
-						disabled={isAvatarAnimating}
+						disabled={isCharacterAnimating}
 					>
 						{t('character')}
 					</Button>
@@ -132,13 +132,13 @@ export const Content = ({
 				<li>{t('comingSoon')}</li>
 			</ul>
 			<Image
-				src='/avatar.png'
-				alt={t('avatar')}
+				src='/character.png'
+				alt={t('character')}
 				width={400}
 				height={600}
 				className={combine(
-					'fixed bottom-0 left-0 drop-shadow-[0_0_10px_rgba(0,0,0,1)] duration-1000',
-					isAvatarShown ? 'ease-out' : '-translate-x-full ease-in',
+					'fixed bottom-0 left-0 max-h-svh max-w-fit drop-shadow-[0_0_10px_rgba(0,0,0,1)] duration-1000',
+					isCharacterShown ? 'ease-out' : '-translate-x-full ease-in',
 				)}
 			/>
 		</div>
