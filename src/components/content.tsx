@@ -1,13 +1,12 @@
 'use client'
 
 import { Button } from '@/components/button'
+import { LocaleButton } from '@/components/localeButton'
 import { Nickname } from '@/components/nickname'
 import { combine } from '@/utils/combine'
-import { setCookieLocale } from '@/utils/cookieLocale'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { useLocale } from 'use-intl'
 
 export const Content = () => {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
@@ -16,7 +15,6 @@ export const Content = () => {
 	const menu = useRef<HTMLUListElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
 	const t = useTranslations('HomePage')
-	const locale = useLocale()
 
 	useEffect(() => {
 		const closeMenu = (event: MouseEvent) => {
@@ -36,12 +34,6 @@ export const Content = () => {
 	}, [])
 
 	const toastyTitle = isAvatarAnimating ? undefined : t('toastyTitle')
-	const isEnglish = locale === 'en'
-	const localeText = isEnglish ? 'Russian' : 'English'
-
-	const toggleLocale = () => {
-		void setCookieLocale(isEnglish ? 'ru' : 'en')
-	}
 
 	const toggleIsMenuShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
@@ -62,20 +54,15 @@ export const Content = () => {
 
 	return (
 		<div className='container mx-auto text-neutral-50'>
-			<Button
-				onClick={toggleLocale}
-				className='fixed top-4 right-4 shadow-black shadow-lg'
-			>
-				{localeText}
-			</Button>
+			<LocaleButton />
 			<main className='flex min-h-svh items-center p-8 text-xl'>
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
 					<ul className='flex flex-col items-center gap-4 sm:items-start'>
 						<Nickname />
-						<li>
+						<li title={t('sloganTitle')}>
 							<q>{t('slogan')}</q>
 						</li>
-						<li>
+						<li title={t('aboutTitle')}>
 							<h2>{t('about')}</h2>
 						</li>
 					</ul>

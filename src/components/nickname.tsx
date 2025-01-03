@@ -11,14 +11,14 @@ export const Nickname = (props: ComponentPropsWithoutRef<'li'>) => {
 	}
 
 	return (
-		<li {...props}>
+		<li title={t('nicknameTitle')} {...props}>
 			<h1
 				className={combine(
-					'break-all font-bold text-9xl',
+					'break-all font-bold text-8xl sm:text-9xl',
 					isLighted && 'text-white',
 				)}
 			>
-				<button type='button' onClick={toggleIsLighted} title={t('nameTitle')}>
+				<button type='button' onClick={toggleIsLighted}>
 					<span
 						className={combine(
 							isLighted &&

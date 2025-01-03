@@ -2,9 +2,11 @@
 	"HomePage": {
 		"sef": "Sef",
 		"o": "o",
-		"nameTitle": "or just Sef",
+		"nicknameTitle": "Nickname",
 		"slogan": "Embraced by Light",
+		"sloganTitle": "Slogan",
 		"about": "Developer, melancholic, introvert.",
+		"aboutTitle": "About me",
 		"logo": "Logo",
 		"projects": "Projects:",
 		"left4Legend": "Left 4 Legend",

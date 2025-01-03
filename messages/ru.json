@@ -2,9 +2,11 @@
 	"HomePage": {
 		"sef": "Сеф",
 		"o": "о",
-		"nameTitle": "или просто Сеф",
+		"nicknameTitle": "Псевдоним",
 		"slogan": "Объятый Светом",
+		"sloganTitle": "Слоган",
 		"about": "Разработчик, меланхолик, интроверт.",
+		"aboutTitle": "О себе",
 		"logo": "Лого",
 		"projects": "Проекты:",
 		"left4Legend": "Оставленные для Легенды",
