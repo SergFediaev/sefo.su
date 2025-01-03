@@ -62,12 +62,26 @@ export default function Home() {
 						<li>
 							<h1
 								className={combine(
-									'break-all font-bold text-9xl transition duration-500',
-									isLighted && 'drop-shadow-[0_0_10px_rgba(0,255,0,1)]',
+									'break-all font-bold text-9xl',
+									isLighted && 'text-white',
 								)}
 							>
-								<button type='button' onClick={toggleIsLighted}>
-									{t('name')}
+								<button
+									type='button'
+									onClick={toggleIsLighted}
+									title={t('nameTitle')}
+								>
+									<span
+										className={combine(
+											isLighted &&
+												'[text-shadow:0_0_80px_green,0_0_30px_lime,0_0_6px_olive]',
+										)}
+									>
+										{t('sef')}
+									</span>
+									<span className={combine(isLighted && 'animate-blink')}>
+										{t('o')}
+									</span>
 								</button>
 							</h1>
 						</li>
@@ -114,7 +128,7 @@ export default function Home() {
 				ref={menu}
 				className={combine(
 					'fixed right-8 bottom-8 left-8 mx-auto flex w-fit flex-wrap gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:gap-8',
-					isMenuNotShown && 'opacity-0',
+					isMenuNotShown && 'pointer-events-none opacity-0',
 				)}
 			>
 				<li>
