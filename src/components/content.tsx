@@ -1,14 +1,22 @@
 'use client'
 
 import { Button } from '@/components/button'
+import { Info } from '@/components/info'
 import { LocaleButton } from '@/components/localeButton'
-import { Nickname } from '@/components/nickname'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import {
+	type ComponentPropsWithoutRef,
+	useEffect,
+	useRef,
+	useState,
+} from 'react'
 
-export const Content = () => {
+export const Content = ({
+	className,
+	...restProps
+}: ComponentPropsWithoutRef<'div'>) => {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
 	const [isAvatarShown, setIsAvatarShown] = useState(false)
 	const [isAvatarAnimating, setIsAvatarAnimating] = useState(false)
@@ -33,7 +41,7 @@ export const Content = () => {
 		}
 	}, [])
 
-	const toastyTitle = isAvatarAnimating ? undefined : t('toastyTitle')
+	const characterTitle = isAvatarAnimating ? undefined : t('characterTitle')
 
 	const toggleIsMenuShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
@@ -53,19 +61,14 @@ export const Content = () => {
 	}
 
 	return (
-		<div className='container mx-auto text-neutral-50'>
+		<div
+			className={combine('container mx-auto text-neutral-50', className)}
+			{...restProps}
+		>
 			<LocaleButton />
 			<main className='flex min-h-svh items-center p-8 text-xl'>
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
-					<ul className='flex flex-col items-center gap-4 sm:items-start'>
-						<Nickname />
-						<li title={t('sloganTitle')}>
-							<q>{t('slogan')}</q>
-						</li>
-						<li title={t('aboutTitle')}>
-							<h2>{t('about')}</h2>
-						</li>
-					</ul>
+					<Info />
 					<button ref={button} type='button' onClick={toggleIsMenuShown}>
 						<Image
 							src='/logo.svg'
@@ -120,10 +123,10 @@ export const Content = () => {
 				<li>
 					<Button
 						onClick={showAvatar}
-						title={toastyTitle}
+						title={characterTitle}
 						disabled={isAvatarAnimating}
 					>
-						{t('toasty')}
+						{t('character')}
 					</Button>
 				</li>
 				<li>{t('comingSoon')}</li>
