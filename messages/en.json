@@ -2,12 +2,13 @@
 	"HomePage": {
 		"sef": "Sef",
 		"o": "o",
-		"nicknameTitle": "Nickname",
+		"nicknameTitle": "Nickname:",
 		"slogan": "Embraced by Light",
-		"sloganTitle": "Slogan",
+		"sloganTitle": "Slogan:",
 		"about": "Developer, melancholic, introvert.",
-		"aboutTitle": "About me",
+		"aboutTitle": "About me:",
 		"logo": "Logo",
+		"logoTitle": "Logo (pressing toggles menu)",
 		"projects": "Projects:",
 		"left4Legend": "Left 4 Legend",
 		"javangelion": "Javangelion",
@@ -22,6 +23,7 @@
 		"cake": "The cake is NOT a lie",
 		"character": "Character",
 		"characterTitle": "People are always asking me if I know Milandro Noshimo",
-		"comingSoon": "More coming soon"
+		"comingSoon": "More coming soon",
+		"switchLang": "Switch language to"
 	}
 }

@@ -10,6 +10,7 @@
 		"biome": "bunx biome check --write ./src"
 	},
 	"dependencies": {
+		"@floating-ui/react": "^0.27.2",
 		"@next/third-parties": "^15.1.2",
 		"clsx": "^2.1.1",
 		"next": "15.1.2",

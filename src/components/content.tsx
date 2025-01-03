@@ -3,6 +3,7 @@
 import { Button } from '@/components/button'
 import { Info } from '@/components/info'
 import { LocaleButton } from '@/components/localeButton'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -18,6 +19,7 @@ export const Content = ({
 	...restProps
 }: ComponentPropsWithoutRef<'div'>) => {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
+	const [isLighted, setIsLighted] = useState(false)
 	const [isCharacterShown, setIsCharacterShown] = useState(false)
 	const [isCharacterAnimating, setIsCharacterAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
@@ -47,6 +49,10 @@ export const Content = ({
 		setIsMenuNotShown(!isMenuNotShown)
 	}
 
+	const toggleIsLighted = () => {
+		setIsLighted(!isLighted)
+	}
+
 	const showCharacter = () => {
 		setIsCharacterAnimating(true)
 		setIsCharacterShown(true)
@@ -68,16 +74,24 @@ export const Content = ({
 			<LocaleButton />
 			<main className='flex min-h-svh items-center p-8 text-xl'>
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
-					<Info />
+					<Info isLighted={isLighted} toggleIsLighted={toggleIsLighted} />
 					<button ref={button} type='button' onClick={toggleIsMenuShown}>
-						<Image
-							src='/logo.svg'
-							alt={t('logo')}
-							width={300}
-							height={300}
-							priority
-							className='animate-pulse hover:animate-heartbeat'
-						/>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Image
+									src='/logo.svg'
+									alt={t('logo')}
+									width={300}
+									height={300}
+									priority
+									className={combine(
+										'hover:animate-pulse',
+										isLighted && 'animate-heartbeat',
+									)}
+								/>
+							</TooltipTrigger>
+							<TooltipContent>{t('logoTitle')}</TooltipContent>
+						</Tooltip>
 					</button>
 					<ul className='flex list-disc flex-col gap-2 marker:text-accent'>
 						<h3>{t('projects')}</h3>
@@ -121,13 +135,14 @@ export const Content = ({
 					<a href='/cake.jpg'>{t('cake')}</a>
 				</li>
 				<li>
-					<Button
-						onClick={showCharacter}
-						title={characterTitle}
-						disabled={isCharacterAnimating}
-					>
-						{t('character')}
-					</Button>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button onClick={showCharacter} disabled={isCharacterAnimating}>
+								{t('character')}
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>{characterTitle}</TooltipContent>
+					</Tooltip>
 				</li>
 				<li>{t('comingSoon')}</li>
 			</ul>

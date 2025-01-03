@@ -21,9 +21,11 @@
 ## 🎨 UI/UX
 
 - Tailwind CSS.
+- **Floating UI** — tooltips.
 - Mobile-First.
 - **Responsive** & **Adaptive** web design.
 - HTML5 Semantics.
+- Универсальные полиморфные компоненты.
 
 ## 🔎 SEO
 
