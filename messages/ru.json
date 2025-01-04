@@ -2,15 +2,15 @@
 	"HomePage": {
 		"sef": "Сеф",
 		"o": "о",
-		"nicknameTitle": "Псевдоним:",
+		"nicknameTitle": "Псевдоним",
 		"slogan": "Объятый Светом",
-		"sloganTitle": "Слоган:",
+		"sloganTitle": "Слоган",
 		"about": "Разработчик, меланхолик, интроверт.",
-		"aboutTitle": "О себе:",
+		"aboutTitle": "О себе",
 		"logo": "Логотип",
 		"logoTitle": "Логотип (нажатие переключает меню)",
 		"projects": "Проекты:",
-		"left4Legend": "Оставленные для Легенды",
+		"left4Legend": "Оставленные Легенде",
 		"javangelion": "Джавангелион",
 		"deci": "Дэси",
 		"drumgard": "Драмгард",
@@ -24,6 +24,6 @@
 		"character": "Персонаж",
 		"characterTitle": "Меня часто спрашивают: знаю ли я Миландро Ношимо?",
 		"comingSoon": "Скоро будет больше",
-		"switchLang": "Переключить язык на"
+		"switchLang": "Switch language"
 	}
 }

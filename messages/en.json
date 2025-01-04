@@ -2,11 +2,11 @@
 	"HomePage": {
 		"sef": "Sef",
 		"o": "o",
-		"nicknameTitle": "Nickname:",
+		"nicknameTitle": "Nickname",
 		"slogan": "Embraced by Light",
-		"sloganTitle": "Slogan:",
+		"sloganTitle": "Slogan",
 		"about": "Developer, melancholic, introvert.",
-		"aboutTitle": "About me:",
+		"aboutTitle": "About me",
 		"logo": "Logo",
 		"logoTitle": "Logo (pressing toggles menu)",
 		"projects": "Projects:",
@@ -24,6 +24,6 @@
 		"character": "Character",
 		"characterTitle": "People are always asking me if I know Milandro Noshimo",
 		"comingSoon": "More coming soon",
-		"switchLang": "Switch language to"
+		"switchLang": "Переключить язык"
 	}
 }

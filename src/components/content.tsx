@@ -5,6 +5,7 @@ import { Info } from '@/components/info'
 import { LocaleButton } from '@/components/localeButton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { combine } from '@/utils/combine'
+import { HeartPulse } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import {
@@ -20,6 +21,7 @@ export const Content = ({
 }: ComponentPropsWithoutRef<'div'>) => {
 	const [isMenuNotShown, setIsMenuNotShown] = useState(true)
 	const [isLighted, setIsLighted] = useState(false)
+	const [isHeartbeat, setIsHeartbeat] = useState(false)
 	const [isCharacterShown, setIsCharacterShown] = useState(false)
 	const [isCharacterAnimating, setIsCharacterAnimating] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
@@ -51,6 +53,10 @@ export const Content = ({
 
 	const toggleIsLighted = () => {
 		setIsLighted(!isLighted)
+	}
+
+	const toggleIsHeartbeat = () => {
+		setIsHeartbeat(!isHeartbeat)
 	}
 
 	const showCharacter = () => {
@@ -86,7 +92,7 @@ export const Content = ({
 									priority
 									className={combine(
 										'hover:animate-pulse',
-										isLighted && 'animate-heartbeat',
+										isHeartbeat && 'animate-heartbeat',
 									)}
 								/>
 							</TooltipTrigger>
@@ -142,6 +148,20 @@ export const Content = ({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>{characterTitle}</TooltipContent>
+					</Tooltip>
+				</li>
+				<li>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button variant='icon' onClick={toggleIsHeartbeat}>
+								<HeartPulse
+									className={combine(
+										isHeartbeat && 'fill-accent hover:fill-variant',
+									)}
+								/>
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>🐞</TooltipContent>
 					</Tooltip>
 				</li>
 				<li>{t('comingSoon')}</li>

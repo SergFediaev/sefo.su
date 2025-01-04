@@ -21,6 +21,7 @@
 ## 🎨 UI/UX
 
 - Tailwind CSS.
+- Lucide Icons.
 - **Floating UI** — tooltips.
 - Mobile-First.
 - **Responsive** & **Adaptive** web design.
