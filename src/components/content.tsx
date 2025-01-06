@@ -102,7 +102,7 @@ export const Content = ({
 					<ul className='flex list-disc flex-col gap-2 marker:text-accent'>
 						<h3>{t('projects')}</h3>
 						<li>
-							<a href='https://L4L.Sefo.su'>{t('left4Legend')}</a>
+							<a href='https://L4L.su'>{t('left4Legend')}</a>
 						</li>
 						<li>
 							<a href='https://Notasi.ru/javangelion'>{t('javangelion')}</a>
@@ -161,7 +161,15 @@ export const Content = ({
 								/>
 							</Button>
 						</TooltipTrigger>
-						<TooltipContent>🐞</TooltipContent>
+						<TooltipContent>
+							<Image
+								src='/symbol.png'
+								width={100}
+								height={100}
+								alt={t('symbol')}
+								className='my-2 w-12 rotate-45 drop-shadow-[0_0_1px_rgba(0,0,0,1)]'
+							/>
+						</TooltipContent>
 					</Tooltip>
 				</li>
 				<li>{t('comingSoon')}</li>
