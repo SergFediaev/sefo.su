@@ -1,3 +1,4 @@
+import { combine } from '@/utils/combine'
 import type { Placement } from '@floating-ui/react'
 import {
 	FloatingPortal,
@@ -14,6 +15,7 @@ import {
 	useRole,
 } from '@floating-ui/react'
 import * as React from 'react'
+import { useEffect, useState } from 'react'
 
 interface TooltipOptions {
 	initialOpen?: boolean
@@ -143,14 +145,42 @@ export const TooltipTrigger = React.forwardRef<
 	)
 })
 
+const TRANSITION_DURATION = 300
+
 export const TooltipContent = React.forwardRef<
 	HTMLDivElement,
 	React.HTMLProps<HTMLDivElement>
 >(function TooltipContent({ style, ...props }, propRef) {
 	const context = useTooltipContext()
 	const ref = useMergeRefs([context.refs.setFloating, propRef])
+	const [isMounted, setIsMounted] = useState(false)
+	const [isVisible, setIsVisible] = useState(false)
 
-	if (!context.open) return null
+	useEffect(() => {
+		let timeout: NodeJS.Timeout
+
+		if (context.open) {
+			setIsMounted(true)
+
+			timeout = setTimeout(() => {
+				setIsVisible(true)
+			}, TRANSITION_DURATION)
+		} else {
+			setIsVisible(false)
+
+			timeout = setTimeout(() => {
+				setIsMounted(false)
+			}, TRANSITION_DURATION)
+		}
+
+		return () => {
+			clearTimeout(timeout)
+		}
+	}, [context.open])
+
+	if (!isMounted) {
+		return null
+	}
 
 	return (
 		<FloatingPortal>
@@ -161,7 +191,10 @@ export const TooltipContent = React.forwardRef<
 					...style,
 				}}
 				{...context.getFloatingProps(props)}
-				className='rounded bg-neutral-100 px-2 text-background'
+				className={combine(
+					`z-30 rounded bg-neutral-100 px-2 text-background transition duration-${TRANSITION_DURATION}`,
+					isVisible ? 'opacity-100' : 'opacity-0',
+				)}
 			/>
 		</FloatingPortal>
 	)
