@@ -4,7 +4,6 @@ import { Button } from '@/components/button'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function ErrorPage({
@@ -16,7 +15,6 @@ export default function ErrorPage({
 }) {
 	const [isMounted, setIsMounted] = useState(false)
 	const t = useTranslations('HomePage')
-	const router = useRouter()
 
 	useEffect(() => {
 		console.error(error)
@@ -36,10 +34,6 @@ export default function ErrorPage({
 		window.location.reload()
 	}
 
-	const returnToHomepage = () => {
-		router.push('/')
-	}
-
 	return (
 		<div className='min-h-svh bg-lime-600 text-white'>
 			<div className='container mx-auto flex flex-wrap-reverse items-center justify-center'>
@@ -54,13 +48,12 @@ export default function ErrorPage({
 							{t('reloadPage')}
 						</Button>
 					</div>
-					<button
-						type='button'
-						onClick={returnToHomepage}
-						className='self-start underline underline-offset-4 transition hover:text-black hover:decoration-black'
+					<a
+						href='/'
+						className='self-start decoration-white hover:text-black hover:decoration-black'
 					>
 						{t('returnToHomepage')}
-					</button>
+					</a>
 				</aside>
 				<Image
 					src='/mika.gif'
