@@ -1,12 +1,21 @@
 'use client'
 
 import { Button } from '@/components/button'
+import { Href } from '@/components/href'
 import { Info } from '@/components/info'
 import { LocaleButton } from '@/components/localeButton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { debugStore } from '@/stores/debugStore'
 import { combine } from '@/utils/combine'
-import { Bug, HeartPulse } from 'lucide-react'
+import {
+	Bug,
+	Cake,
+	HeartPulse,
+	Mail,
+	ScrollText,
+	Send,
+	User,
+} from 'lucide-react'
 import { nanoid } from 'nanoid'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -115,20 +124,30 @@ export const Content = ({
 					<ul className='flex list-disc flex-col gap-2 marker:text-accent'>
 						<h3>{t('projects')}</h3>
 						<li>
-							<a href='https://L4L.su'>{t('left4Legend')}</a>
+							<Href as={Link} href='https://L4L.su'>
+								{t('left4Legend')}
+							</Href>
 						</li>
 						<li>
-							<a href='https://Notasi.ru/javangelion'>{t('javangelion')}</a>
+							<Href as={Link} href='https://Notasi.ru/javangelion'>
+								{t('javangelion')}
+							</Href>
 						</li>
 						<li>
-							<a href='https://Notasi.ru/deci/en'>{t('deci')}</a>
+							<Href as={Link} href='https://Notasi.ru/deci/en'>
+								{t('deci')}
+							</Href>
 						</li>
 						<li>
-							<a href='https://vk.com/Drumgard'>{t('drumgard')}</a>{' '}
+							<Href as={Link} href='https://vk.com/Drumgard'>
+								{t('drumgard')}
+							</Href>{' '}
 							<sup>{t('inactive')}</sup>
 						</li>
 						<li>
-							<a href='https://Notasi.ru'>{t('notasi')}</a>{' '}
+							<Href as={Link} href='https://Notasi.ru'>
+								{t('notasi')}
+							</Href>{' '}
 							<sup>{t('old')}</sup>
 						</li>
 					</ul>
@@ -137,27 +156,59 @@ export const Content = ({
 			<ul
 				ref={menu}
 				className={combine(
-					'fixed right-8 bottom-8 left-8 mx-auto flex max-w-lg flex-wrap justify-between gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:justify-evenly sm:gap-8 sm:rounded-full',
+					'fixed right-8 bottom-8 left-8 mx-auto flex max-w-lg flex-wrap justify-between gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:justify-evenly sm:gap-8',
 					isMenuNotShown && 'pointer-events-none opacity-0',
 				)}
 			>
 				<li>
-					<a href='mailto:SefoNotasi@gmail.com'>{t('email')}</a>
-				</li>
-				<li>
-					<a href='https://t.me/SefoNotasi'>{t('telegram')}</a>
-				</li>
-				<li>
-					<a href='/license.jpg'>{t('domainLicense')}</a>
-				</li>
-				<li>
-					<a href='/cake.jpg'>{t('cake')}</a>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Href as={Link} variant='icon' href='mailto:SefoNotasi@gmail.com'>
+								<Mail />
+							</Href>
+						</TooltipTrigger>
+						<TooltipContent>{t('email')}</TooltipContent>
+					</Tooltip>
 				</li>
 				<li>
 					<Tooltip>
 						<TooltipTrigger asChild>
-							<Button onClick={showCharacter} disabled={isCharacterAnimating}>
-								{t('character')}
+							<Href as={Link} variant='icon' href='https://t.me/SefoNotasi'>
+								<Send />
+							</Href>
+						</TooltipTrigger>
+						<TooltipContent>{t('telegram')}</TooltipContent>
+					</Tooltip>
+				</li>
+				<li>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Href as={Link} variant='icon' href='/license.jpg'>
+								<ScrollText />
+							</Href>
+						</TooltipTrigger>
+						<TooltipContent>{t('domainLicense')}</TooltipContent>
+					</Tooltip>
+				</li>
+				<li>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Href as={Link} variant='icon' href='/cake.jpg'>
+								<Cake />
+							</Href>
+						</TooltipTrigger>
+						<TooltipContent>{t('cake')}</TooltipContent>
+					</Tooltip>
+				</li>
+				<li>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								variant='icon'
+								onClick={showCharacter}
+								disabled={isCharacterAnimating}
+							>
+								<User />
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>{characterTitle}</TooltipContent>
@@ -202,7 +253,9 @@ export const Content = ({
 				{isDebug ? (
 					<>
 						<li>
-							<Link href='/not-found'>{t('404')}</Link>
+							<Href as={Link} href='/not-found'>
+								{t('404')}
+							</Href>
 						</li>
 						<li>
 							<Button onClick={throwError}>{t('error')}</Button>

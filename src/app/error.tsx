@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/button'
+import { Href } from '@/components/href'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -48,12 +49,9 @@ export default function ErrorPage({
 							{t('reloadPage')}
 						</Button>
 					</div>
-					<a
-						href='/'
-						className='self-start decoration-white hover:text-black hover:decoration-black'
-					>
+					<Href href='/' variant='inversion'>
 						{t('returnToHomepage')}
-					</a>
+					</Href>
 				</aside>
 				<Image
 					src='/mika.gif'

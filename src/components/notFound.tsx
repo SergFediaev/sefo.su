@@ -1,5 +1,6 @@
 'use client'
 
+import { Href } from '@/components/href'
 import { combine } from '@/utils/combine'
 import { LoaderCircle } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -30,9 +31,9 @@ export const NotFound = () => {
 				) : (
 					<LoaderCircle className='animate-spin' />
 				)}
-				<Link href='/' className='decoration-lime-600 hover:text-lime-600'>
+				<Href as={Link} href='/' variant='secondary'>
 					{t('returnToHomepage')}
-				</Link>
+				</Href>
 			</aside>
 			<Image
 				src='/sasha.gif'
