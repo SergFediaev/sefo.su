@@ -2,7 +2,7 @@ import { combine } from '@/utils/combine'
 import type { ComponentPropsWithoutRef } from 'react'
 
 type Props = {
-	variant?: 'primary' | 'icon'
+	variant?: 'primary' | 'icon' | 'outline'
 } & ComponentPropsWithoutRef<'button'>
 
 export const Button = ({
@@ -13,10 +13,12 @@ export const Button = ({
 	return (
 		<button
 			className={combine(
-				'transition disabled:opacity-50',
+				'flex justify-center rounded-2xl transition disabled:opacity-50',
 				variant === 'primary' &&
-					'rounded-lg bg-accent px-2 text-black hover:bg-variant disabled:bg-variant',
+					'bg-accent px-2 text-black hover:bg-variant disabled:bg-variant sm:px-3',
 				variant === 'icon' && 'text-accent hover:text-variant',
+				variant === 'outline' &&
+					'grow border-2 px-2 hover:border-black hover:text-black sm:px-3',
 				className,
 			)}
 			{...restProps}

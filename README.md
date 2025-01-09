@@ -15,6 +15,7 @@
 - **Bun** — runtime, package manager & bundler.
 - **Biome** — formatter & linter.
 - **Next-Intl** — internationalization.
+- **Zustand** — client-state management.
 - Flat Code, Guard Clause.
 - [Архитектурная методология Дэна Абрамова](https://react-file-structure.surge.sh).
 

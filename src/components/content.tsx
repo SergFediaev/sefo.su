@@ -4,10 +4,13 @@ import { Button } from '@/components/button'
 import { Info } from '@/components/info'
 import { LocaleButton } from '@/components/localeButton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
+import { debugStore } from '@/stores/debugStore'
 import { combine } from '@/utils/combine'
-import { HeartPulse } from 'lucide-react'
+import { Bug, HeartPulse } from 'lucide-react'
+import { nanoid } from 'nanoid'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
 	type ComponentPropsWithoutRef,
 	useEffect,
@@ -24,9 +27,12 @@ export const Content = ({
 	const [isHeartbeat, setIsHeartbeat] = useState(false)
 	const [isCharacterShown, setIsCharacterShown] = useState(false)
 	const [isCharacterAnimating, setIsCharacterAnimating] = useState(false)
+	const [isError, setIsError] = useState(false)
 	const menu = useRef<HTMLUListElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
 	const t = useTranslations('HomePage')
+	const { isDebug, isMarkupShown, toggleIsDebug, toggleIsMarkupShown } =
+		debugStore()
 
 	useEffect(() => {
 		const closeMenu = (event: MouseEvent) => {
@@ -46,6 +52,8 @@ export const Content = ({
 	}, [])
 
 	const characterTitle = isCharacterAnimating ? undefined : t('characterTitle')
+	const debugTitle = t(isDebug ? 'disableDebugMode' : 'enableDebugMode')
+	const markupText = t(isMarkupShown ? 'hideMarkup' : 'showMarkup')
 
 	const toggleIsMenuNotShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
@@ -72,11 +80,16 @@ export const Content = ({
 		}, 4_000)
 	}
 
+	const throwError = () => {
+		setIsError(true)
+	}
+
+	if (isError) {
+		throw Error(`${t('debugError')}${nanoid()}`)
+	}
+
 	return (
-		<div
-			className={combine('container mx-auto text-neutral-50', className)}
-			{...restProps}
-		>
+		<div className={combine('container mx-auto', className)} {...restProps}>
 			<LocaleButton />
 			<main className='flex min-h-svh items-center p-8 text-xl'>
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
@@ -124,7 +137,7 @@ export const Content = ({
 			<ul
 				ref={menu}
 				className={combine(
-					'fixed right-8 bottom-8 left-8 mx-auto flex w-fit flex-wrap gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:gap-8',
+					'fixed right-8 bottom-8 left-8 mx-auto flex max-w-lg flex-wrap justify-between gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:justify-evenly sm:gap-8 sm:rounded-full',
 					isMenuNotShown && 'pointer-events-none opacity-0',
 				)}
 			>
@@ -172,7 +185,35 @@ export const Content = ({
 						</TooltipContent>
 					</Tooltip>
 				</li>
-				<li>{t('comingSoon')}</li>
+				<li>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button variant='icon' onClick={toggleIsDebug}>
+								<Bug
+									className={combine(
+										isDebug && 'fill-accent hover:fill-variant',
+									)}
+								/>
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>{debugTitle}</TooltipContent>
+					</Tooltip>
+				</li>
+				{isDebug ? (
+					<>
+						<li>
+							<Link href='/not-found'>{t('404')}</Link>
+						</li>
+						<li>
+							<Button onClick={throwError}>{t('error')}</Button>
+						</li>
+						<li>
+							<Button onClick={toggleIsMarkupShown}>{markupText}</Button>
+						</li>
+					</>
+				) : (
+					<li>{t('comingSoon')}</li>
+				)}
 			</ul>
 			<Image
 				src='/character.png'

@@ -25,6 +25,20 @@
 		"characterTitle": "People are always asking me if I know Milandro Noshimo",
 		"symbol": "Symbol",
 		"comingSoon": "More coming soon",
-		"switchLang": "Переключить язык"
+		"switchLang": "Переключить язык",
+		"enableDebugMode": "Enable debug mode",
+		"disableDebugMode": "Disable debug mode",
+		"showMarkup": "Show markup",
+		"hideMarkup": "Hide markup",
+		"error": "Error",
+		"debugError": "Debug error #",
+		"somethingWentWrong": "Something went wrong!",
+		"tryAgain": "Try again",
+		"reloadPage": "Reload page",
+		"errorArtAlt": "Mikasa Ackerman",
+		"404": "404",
+		"addressNotFound": "Requested address not found:",
+		"returnToHomepage": "Return to homepage",
+		"404ArtAlt": "Sasha Braus"
 	}
 }
