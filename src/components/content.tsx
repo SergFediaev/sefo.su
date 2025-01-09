@@ -47,7 +47,7 @@ export const Content = ({
 
 	const characterTitle = isCharacterAnimating ? undefined : t('characterTitle')
 
-	const toggleIsMenuShown = () => {
+	const toggleIsMenuNotShown = () => {
 		setIsMenuNotShown(!isMenuNotShown)
 	}
 
@@ -81,7 +81,7 @@ export const Content = ({
 			<main className='flex min-h-svh items-center p-8 text-xl'>
 				<div className='flex flex-grow flex-wrap justify-evenly gap-8'>
 					<Info isLighted={isLighted} toggleIsLighted={toggleIsLighted} />
-					<button ref={button} type='button' onClick={toggleIsMenuShown}>
+					<button ref={button} type='button' onClick={toggleIsMenuNotShown}>
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<Image
@@ -181,7 +181,9 @@ export const Content = ({
 				height={600}
 				className={combine(
 					'fixed bottom-0 left-0 max-h-svh max-w-fit drop-shadow-[0_0_10px_rgba(0,0,0,1)] duration-1000',
-					isCharacterShown ? 'ease-out' : '-translate-x-full ease-in',
+					isCharacterShown
+						? 'translate-x-0 ease-out'
+						: '-translate-x-full ease-in',
 				)}
 			/>
 		</div>
