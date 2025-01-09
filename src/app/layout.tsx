@@ -8,9 +8,23 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { type ReactNode, Suspense } from 'react'
 
 export const metadata: Metadata = {
-	title: 'Sefo',
+	title: {
+		template: '%s | Sefo',
+		default: 'Sefo',
+	},
 	description: 'Next Legend',
 	keywords: ['Sef', 'Sefo', 'Noshimo', 'Notasi', 'Milandro'],
+	generator: 'Next.js',
+	applicationName: 'Sefo.su',
+	creator: 'Sefo',
+	metadataBase: new URL('https://sefo.su'),
+	alternates: {
+		canonical: '/',
+		languages: {
+			'en-US': '/en-US',
+			'ru-RU': '/ru-RU',
+		},
+	},
 }
 
 export default async function RootLayout({

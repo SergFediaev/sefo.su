@@ -2,7 +2,7 @@ import { NotFound } from '@/components/notFound'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Not found',
+	title: '404',
 }
 
 export default function NotFoundPage() {
