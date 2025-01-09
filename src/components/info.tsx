@@ -36,6 +36,7 @@ export const Info = ({
 							<button type='button' onClick={toggleIsLighted}>
 								<span
 									className={combine(
+										'transition-all duration-1000',
 										isLighted &&
 											'[text-shadow:0_0_80px_green,0_0_30px_lime,0_0_6px_olive]',
 									)}
