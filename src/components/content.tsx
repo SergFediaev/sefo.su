@@ -156,7 +156,7 @@ export const Content = ({
 			<ul
 				ref={menu}
 				className={combine(
-					'fixed right-8 bottom-8 left-8 mx-auto flex max-w-lg flex-wrap items-center justify-between gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:justify-evenly sm:gap-8',
+					'fixed right-8 bottom-8 left-8 mx-auto flex max-w-lg flex-wrap items-center justify-evenly gap-4 rounded-3xl bg-black bg-opacity-80 p-8 backdrop-blur duration-500 sm:gap-8',
 					isMenuNotShown && 'pointer-events-none opacity-0',
 				)}
 			>
