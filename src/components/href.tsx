@@ -19,6 +19,7 @@ export const Href = <T extends ElementType = typeof DEFAULT_TYPE>({
 	return (
 		<Component
 			className={combine(
+				'inline-block align-middle',
 				variant === 'secondary' && 'decoration-lime-600 hover:text-lime-600',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				variant === 'inversion' &&
