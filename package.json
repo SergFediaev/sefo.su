@@ -1,8 +1,9 @@
 {
 	"name": "sefo.su",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
+		"prod": "next build && next start",
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
